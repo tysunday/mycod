@@ -43,7 +43,7 @@ int main()
 					{
 						if (j <= positions)
 						{
-							arrayMove[i][abs(j - positions)] = array[i][j];
+							arrayMove[i][j] = array[i][abs(j - positions)];
 						}
 						else if (j > positions)
 						{
