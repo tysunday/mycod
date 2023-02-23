@@ -7,14 +7,17 @@ using namespace std;
 
 int main()
 {
+	srand(time(NULL));
 	setlocale(LC_ALL, "Russian");
 	const int rows = 5;
 	const int columns = 5;
 	int idMove = 0, answer = 0, positions = 0;
 	idMove = 0;
 
-	int arrayMove[rows][columns];
-	int array[rows][columns]; // здесь массив указателей на массивы.
+	int array[rows][columns]; // исходный
+	int arrayMove[rows][columns]; // передвигаемый
+	int arrayFinal[rows][columns]; // готовый
+	
 
 	for (int i = 0; i < rows; i++)
 	{
@@ -26,34 +29,60 @@ int main()
 		cout << endl;
 	}
 
-	cout << "wanna play? 1 - YES, another symbol - NO" << endl;
-	cin >> answer;
-	while (answer == 1)
-	{
 		cout << "how we will move our massive? 1 - left, 2 - right, 3 - up, 4 - down" << endl;
 		cin >> idMove;
 		cout << "for how many positions? " << endl;
 		cin >> positions;
+		positions %= rows;
+		cout << "Move massive on " << positions << " positions" << endl;
 
-			if (idMove == 1)
+		if (idMove == 1)
+		{
+			for (int i = 0; i < rows; i++)
 			{
-				for (int i = 0; i < rows; i++)
+				for (int j = 0; j < columns; j++)
 				{
-					for (int j = 0; j < columns; j++)
-					{
-						if (j <= positions)
-						{
-							arrayMove[i][j] = array[i][abs(j - positions)];
-						}
-						else if (j > positions)
-						{
-							arrayMove[i][j] = array[i][j];
-						}
-					}
+					arrayMove[i][j] = array[i][(j + positions) % rows];
 				}
 			}
-			cin >> answer;
-	}
+		}
+		else if (idMove == 2)
+		{
+			for (int i = 0; i < rows; i++)
+			{
+				for (int j = 0; j < columns; j++)
+				{
+					arrayFinal[i][j] = array[i][j]; 
+					// ввёл дополнительный массив arrayFinal для того чтоб не менять переменные в основном,
+					//а менять всё постепенно, т.к. в основном массиве, будут перезаписываться нужные нам в дальнейшем данные.
+					arrayMove[i][(j + positions) % rows] = arrayFinal[i][j];
+				}
+			}
+		}
+		else if (idMove == 3)
+		{
+			for (int i = 0; i < rows; i++)
+			{
+				for (int j = 0; j < columns; j++)
+				{
+					arrayMove[i][j] = array[(i + positions) % rows][j];
+				}
+			}
+		}
+		else if (idMove == 4)
+		{
+			for (int i = 0; i < rows; i++)
+			{
+				for (int j = 0; j < columns; j++)
+				{
+					arrayFinal[i][j] = array[i][j];
+					// ввёл дополнительный массив arrayFinal для того чтоб не менять переменные в основном,
+					//а менять всё постепенно, т.к. в основном массиве, будут перезаписываться нужные нам в дальнейшем данные.
+					arrayMove[(i + positions) % rows][j] = arrayFinal[i][j];
+				}
+			}
+		}
+
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < columns; j++)
