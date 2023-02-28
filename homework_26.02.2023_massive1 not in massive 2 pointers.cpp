@@ -21,7 +21,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	srand(time(NULL));
 
-	int sizeA = 0, sizeB = 0, sizeC = 0, sizeD = 0;
+	int sizeA = 0, sizeB = 0, sizeC = 0, sizeD = 0, sizeF = 0;
 	int sizeThirdC = 0, sizeThirdD = 0;
 	bool flag;
 
@@ -33,6 +33,7 @@ int main()
 	int* arrayB = new int[sizeB];
 	int* arrayC = new int[sizeC];
 	int* arrayD = new int(sizeD);
+	int* arrayF = new int(sizeF);
 	FillArray(arrayA, sizeA);
 	FillArray(arrayB, sizeB);
 	CoutArray(arrayA, sizeA);
@@ -44,8 +45,27 @@ int main()
 	(arrayB, arrayA, sizeB, sizeA, arrayD, sizeD);
 
 
-	cout << sizeThirdC << " sizeC\n"; // эти значения я пытаюсь вывести, почему показывает 0? 
-	cout << sizeThirdD << " sizeD\n"; // надо чтоб показывало вычисления сделанные в функции.
+	cout << sizeThirdC << " sizeC\n";
+	cout << sizeThirdD << " sizeD\n"; 
+
+	for (int i = 0; i < sizeThirdC; i++)
+	{
+		arrayF[i] = arrayC[i];
+		++sizeF;
+	}
+	for (int j = 0; j < sizeThirdD; j++)
+	{
+		arrayF[j + sizeThirdC] = arrayD[j];
+		++sizeF;
+	}
+	cout << "Числа не состоящие в массивах друг-друга: ";
+	for (int i = 0; i < sizeF; i++)
+	{
+		cout << arrayF[i] << " ";
+		
+	}
+	cout << endl;
+	cout << "Кол-во найденных элементов не состоящих в массивах друг друга: " << sizeF;
 }
 
 int FillArray(int* array, int size)
