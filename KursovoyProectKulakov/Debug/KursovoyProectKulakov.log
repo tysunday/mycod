@@ -1,6 +1,0 @@
-﻿  Functions.cpp
-C:\Users\Admin\source\repos\KursovoyProectKulakov\Functions.cpp(15,14): warning C4834: отмена возвращаемого значения функции с атрибутом "nodiscard"
-C:\Users\Admin\source\repos\KursovoyProectKulakov\Functions.cpp(27,14): warning C4834: отмена возвращаемого значения функции с атрибутом "nodiscard"
-  KursovoyProectKulakov.cpp
-  Создание кода...
-  KursovoyProectKulakov.vcxproj -> C:\Users\Admin\source\repos\KursovoyProectKulakov\Debug\KursovoyProectKulakov.exe
