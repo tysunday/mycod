@@ -1,0 +1,7 @@
+﻿  field.cpp
+C:\Users\Моё Счастье\Desktop\academy top\CarGame\qq\field.cpp(71,28): warning C4551: в вызове функции отсутствует список аргументов
+  Functions.cpp
+  main.cpp
+C:\Users\Моё Счастье\Desktop\academy top\CarGame\qq\main.cpp(6,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Создание кода...
+  qq.vcxproj -> C:\Users\Моё Счастье\Desktop\academy top\CarGame\x64\Debug\qq.exe
